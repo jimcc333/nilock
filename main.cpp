@@ -20,6 +20,13 @@ vector<int> encrypt(string &input){
 /* decrypting function */
 string decrypt(vector<int> &input){
     string output;
+    char c;
+
+    for(int i = 0; i < input.size(); i++){
+        c = (char)input[i];
+        output.push_back(c);
+    }
+
 	return output;
 }
 
