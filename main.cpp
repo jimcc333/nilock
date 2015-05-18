@@ -30,6 +30,18 @@ string decrypt(vector<int> &input){
 	return output;
 }
 
+/* password hashing function */
+vector<int> hashPW(string &input){
+    int ipsize = input.size();
+    vector<int> intip;
+
+    for(int i = 0; i < ipsize; i++){
+        intip.push_back((int)input[i]);
+    }
+
+	return intip;
+}
+
 /* test to see output from decrypt matches input */
 bool test(string &input){
 	vector<int> encrypted = encrypt(input);
@@ -55,12 +67,26 @@ int main(int argc, char* argv[])
 
 		// reads the whole file in input
 		string input((std::istreambuf_iterator<char>(inf)), std::istreambuf_iterator<char>());
+		string password;
 
 		inf.close();
 
 		input[0] = 60;
 		input[1] = 60 + 256;
 		if((int)input[0] == (int)input[1]){cout << "Passed domain test" << endl;}
+
+		//Enter Password
+		cout << "Enter Password: ";
+		cin >> password;
+
+		vector<int> hashedPW = hashPW(password);
+
+		cout << "Hashed Password: ";
+		for(int i = 0; i<hashedPW.size(); i++){
+            cout << hashedPW[i] << " ";
+		}
+		cout << endl;
+		//End of printing hashed password
 
         cout << (int)input[0] << " " << (int)input[1] << " " << (int)input[2] << endl;
 
