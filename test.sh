@@ -15,7 +15,7 @@ echo
 echo 'Removing old buid'
 rm -f ./nilock
 echo 'Starting build'
-g++ -o nilock main.cpp -std=c++11
+g++ -o nilock src/main.cpp -std=c++11 || (echo "----- Build failed -----"; exit)
 echo 'Build complete'
 echo 'Running test case'
 ./nilock example test_out
